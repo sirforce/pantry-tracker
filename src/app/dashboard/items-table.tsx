@@ -30,7 +30,7 @@ import {
 import { deleteItemAction } from "./_actions/delete-item.action";
 import { incrementItemAction } from "./_actions/increment-item.action";
 import { decrementItemAction } from "./_actions/decrement-item.action";
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import { markAsLowAction } from "./_actions/mark-as-low.action";
 import { unmarkAsLowAction } from "./_actions/unmark-as-low.action";
@@ -45,23 +45,23 @@ export type Item = {
 export function ItemsTable({ items }: { items: Item[] }) {
   const { toast } = useToast();
 
-  const [unmarkLowState, unmarkAsLow] = useFormState(unmarkAsLowAction, {
+  const [unmarkLowState, unmarkAsLow] = useActionState(unmarkAsLowAction, {
     showToast: false,
   });
 
-  const [markLowState, markAsLow] = useFormState(markAsLowAction, {
+  const [markLowState, markAsLow] = useActionState(markAsLowAction, {
     showToast: false,
   });
 
-  const [decrementState, decrementAction] = useFormState(decrementItemAction, {
+  const [decrementState, decrementAction] = useActionState(decrementItemAction, {
     showToast: false,
   });
 
-  const [incrementState, incrementAction] = useFormState(incrementItemAction, {
+  const [incrementState, incrementAction] = useActionState(incrementItemAction, {
     showToast: false,
   });
 
-  const [deleteState, deleteAction] = useFormState(deleteItemAction, {
+  const [deleteState, deleteAction] = useActionState(deleteItemAction, {
     showToast: false,
   });
 

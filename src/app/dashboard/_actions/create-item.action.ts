@@ -3,7 +3,7 @@
 import { createItem } from "@/data-access/items/create-item.persistence";
 import { getUserItemByName } from "@/data-access/items/get-items-by-name.persistence";
 import { updateItem } from "@/data-access/items/update-item.persistence";
-import { auth } from "@/lib/auth";
+import { authWithGetUser } from "@/lib/auth";
 import { createItemUseCase } from "@/use-cases/items/create-item.use-case";
 import { ValidationError } from "@/use-cases/items/utils";
 import { revalidatePath } from "next/cache";
@@ -42,7 +42,7 @@ export async function createItemAction(
   state: CreateItemState,
   formData: FormData
 ): Promise<CreateItemState> {
-  const { getUser } = await auth();
+  const { getUser } = await authWithGetUser();
 
   const submittedForm = {
     name: formData.get("name") as string,

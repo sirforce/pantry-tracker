@@ -1,11 +1,11 @@
 import { ModeToggle } from "./theme-toggle";
 import { Button } from "@/components/ui/button";
-import { auth } from "@/lib/auth";
+import { authWithGetUser } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
 
 export async function Header() {
-  const { getUser } = await auth();
+  const { getUser } = await authWithGetUser();
 
   const user = getUser();
 

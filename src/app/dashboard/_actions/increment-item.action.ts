@@ -1,6 +1,6 @@
 "use server";
 
-import { auth } from "@/lib/auth";
+import { authWithGetUser } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
 import { State } from "./decrement-item.action";
 import { incrementItemUseCase } from "@/use-cases/items/increment-item.use-case";
@@ -11,7 +11,7 @@ export async function incrementItemAction(
   state: State,
   formData: FormData
 ): Promise<State> {
-  const { getUser } = await auth();
+  const { getUser } = await authWithGetUser();
 
   const itemId = parseInt(formData.get("itemId") as string);
 

@@ -9,8 +9,6 @@ import {
   date,
   boolean,
 } from "drizzle-orm/pg-core";
-import type { AdapterAccount } from "@auth/core/adapters";
-
 export const users = pgTable("user", {
   id: text("id").notNull().primaryKey(),
   name: text("name"),
@@ -25,7 +23,7 @@ export const accounts = pgTable(
     userId: text("userId")
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
-    type: text("type").$type<AdapterAccount["type"]>().notNull(),
+    type: text("type").$type<"oauth" | "email" | "credentials">().notNull(),
     provider: text("provider").notNull(),
     providerAccountId: text("providerAccountId").notNull(),
     refresh_token: text("refresh_token"),

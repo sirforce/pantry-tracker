@@ -8,8 +8,19 @@ docker compose up
 npm i
 npm run db:push
 npm run dev
-open http://localhost:3000
+open http://localhost:3100
 ```
+
+### Google OAuth Setup
+
+For local development, make sure your `.env` file includes:
+- `NEXTAUTH_URL=http://localhost:3100`
+- `NEXTAUTH_SECRET=your-secret-key` (generate with: `openssl rand -base64 32`)
+- `GOOGLE_ID=your-google-client-id`
+- `GOOGLE_SECRET=your-google-client-secret`
+
+**Important**: In your Google Cloud Console OAuth 2.0 Client configuration, add the following authorized redirect URI:
+- `http://localhost:3100/api/auth/callback/google`
 
 ## Project Goals
 

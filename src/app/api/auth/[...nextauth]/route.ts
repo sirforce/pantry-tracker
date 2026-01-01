@@ -1,6 +1,4 @@
-import { authConfig } from "@/lib/auth";
-import NextAuth from "next-auth";
+export { GET, POST } from "@/lib/auth";
 
-const handler = NextAuth(authConfig);
-
-export { handler as GET, handler as POST };
+// Explicitly set runtime to Node.js to avoid Edge Runtime warnings
+export const runtime = "nodejs";
